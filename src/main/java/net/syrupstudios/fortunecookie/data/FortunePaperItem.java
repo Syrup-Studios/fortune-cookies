@@ -25,9 +25,9 @@ public class FortunePaperItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
-        //Standard check for use to ensure we are dealing w/ an actual player, and that they are crouching
+        // Standard check for use to ensure we are dealing with an actual player, and that they are crouching
         if (!world.isClient && user instanceof ServerPlayerEntity player && user.isSneaking()) {
-            //ensure the fortune paper they are using hasn't been used yet.
+            // Ensure the fortune paper they are using hasn't been used yet
             if (!hasFortune(player.getMainHandStack().getNbt())) {
                 Fortune fortune = FortuneManager.getRandomFortune();
                 player.getMainHandStack().decrement(1);
@@ -39,16 +39,38 @@ public class FortunePaperItem extends Item {
                 if (!player.getInventory().insertStack(fortunePaper)) {
                     player.dropItem(fortunePaper, false);
                 }
-                //Calls FortuneManager and gets random status effect dependent on status and open UI
-                player.addStatusEffect(new StatusEffectInstance(FortuneManager.getFortuneStatusEffect(fortune), 665, 0));
+
+                // Apply effects to the player
+                applyFortuneEffects(player, fortune);
+
+                // Open fortune UI
                 openFortuneUI(player, fortune.getFortuneValue());
             }
             //once fortune paper has already been opened once, simply open UI
-            else{
+            else {
                 openFortuneUI(player, player.getMainHandStack().getNbt().getString("fortune"));
             }
         }
         return TypedActionResult.success(user.getStackInHand(hand));
+    }
+
+    /**
+     * Apply effects from a fortune to a player
+     * All effects must be defined in the datapack
+     */
+    private void applyFortuneEffects(ServerPlayerEntity player, Fortune fortune) {
+        if (fortune.hasCustomEffects()) {
+            for (Fortune.FortuneEffect effect : fortune.getEffects()) {
+                player.addStatusEffect(new StatusEffectInstance(
+                        effect.getEffect(),
+                        effect.getDuration(),
+                        effect.getAmplifier()
+                ));
+            }
+        } else {
+            // No effects defined - this fortune won't apply any effects
+            System.out.println("[Fortune Cookies] Warning: Fortune '" + fortune.getFortuneValue() + "' has no effects defined!");
+        }
     }
 
     private static void openFortuneUI(ServerPlayerEntity player, String fortune) {
