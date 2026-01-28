@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 import net.syrupstudios.fortunecookie.FortuneManager;
 import net.syrupstudios.fortunecookie.constants.Aura;
+import net.syrupstudios.fortunecookie.constants.Effect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -90,19 +91,10 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
                 weight = json.get("weight").getAsInt();
             }
 
-            List<Fortune.FortuneEffect> effects = new ArrayList<>();
+            List<Effect> effects = new ArrayList<>();
             if (json.has("effects") && json.get("effects").isJsonArray()) {
                 JsonArray effectsArray = json.getAsJsonArray("effects");
-
-                for (JsonElement element : effectsArray) {
-                    if (element.isJsonObject()) {
-                        JsonObject effectObj = element.getAsJsonObject();
-                        Fortune.FortuneEffect effect = parseEffect(effectObj, resourceId);
-                        if (effect != null) {
-                            effects.add(effect);
-                        }
-                    }
-                }
+                effectsArray.forEach(element -> attemptEffectParsing(resourceId, element, effects));
             }
 
             return new Fortune(fortuneText, aura, effects, weight);
@@ -113,25 +105,34 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         }
     }
 
-    private Fortune.FortuneEffect parseEffect(JsonObject effectJson, Identifier resourceId) {
+    private void attemptEffectParsing(Identifier resourceId, JsonElement element, List<Effect> effects) {
+        if (element.isJsonObject()) {
+            Effect effect = parseEffect(element.getAsJsonObject(), resourceId);
+            if (effect != null) {
+                effects.add(effect);
+            }
+        }
+    }
+
+    private Effect parseEffect(JsonObject effectJson, Identifier resourceId) {
         try {
-            if (!effectJson.has("effect")) {
-                LOGGER.warn("Effect in {} missing 'effect' field", resourceId);
+            if (!effectJson.has("statusEffect")) {
+                LOGGER.warn("Effect in {} missing 'statusEffect' field", resourceId);
                 return null;
             }
 
-            String effectId = effectJson.get("effect").getAsString();
-            StatusEffect effect = Fortune.FortuneEffect.parseEffect(effectId);
+            String effectId = effectJson.get("statusEffect").getAsString();
+            StatusEffect effect = Effect.parseEffect(effectId);
 
             if (effect == null) {
-                LOGGER.warn("Unknown effect '{}' in {}", effectId, resourceId);
+                LOGGER.warn("Unknown statusEffect '{}' in {}", effectId, resourceId);
                 return null;
             }
 
-            // 600 ticks = 30 seconds
+            // 600 ticks = 30 seconds, multiply json duration by 20 to compute seconds -> ticks
             int duration = 600;
             if (effectJson.has("duration")) {
-                duration = effectJson.get("duration").getAsInt();
+                duration = effectJson.get("duration").getAsInt()*20;
             }
 
             // default to 0 = level 1
@@ -140,10 +141,10 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
                 amplifier = effectJson.get("amplifier").getAsInt();
             }
 
-            return new Fortune.FortuneEffect(effect, duration, amplifier);
+            return new Effect(effect, duration, amplifier);
 
         } catch (Exception e) {
-            LOGGER.error("Error parsing effect in {}: {}", resourceId, e.getMessage());
+            LOGGER.error("Error parsing statusEffect in {}: {}", resourceId, e.getMessage());
             return null;
         }
     }

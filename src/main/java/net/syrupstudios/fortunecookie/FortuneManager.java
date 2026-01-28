@@ -47,9 +47,4 @@ public class FortuneManager {
 
         return FORTUNES.get(FORTUNES.size() - 1);
     }
-
-
-    public static List<Fortune> getAllFortunes() {
-        return new ArrayList<>(FORTUNES);
-    }
 }

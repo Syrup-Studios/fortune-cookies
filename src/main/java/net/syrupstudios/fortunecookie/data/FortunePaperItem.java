@@ -13,6 +13,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.syrupstudios.fortunecookie.*;
 import net.syrupstudios.fortunecookie.constants.Aura;
+import net.syrupstudios.fortunecookie.constants.Effect;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -61,11 +62,11 @@ public class FortunePaperItem extends Item {
      */
     private void applyFortuneEffects(ServerPlayerEntity player, Fortune fortune) {
         if (fortune.hasCustomEffects()) {
-            for (Fortune.FortuneEffect effect : fortune.getEffects()) {
+            for (Effect effect : fortune.getEffects()) {
                 player.addStatusEffect(new StatusEffectInstance(
-                        effect.getEffect(),
-                        effect.getDuration(),
-                        effect.getAmplifier()
+                        effect.statusEffect(),
+                        effect.duration(),
+                        effect.amplifier()
                 ));
             }
         } else {
