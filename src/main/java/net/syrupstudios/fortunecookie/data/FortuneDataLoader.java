@@ -9,6 +9,7 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 import net.syrupstudios.fortunecookie.FortuneManager;
+import net.syrupstudios.fortunecookie.constants.Aura;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,12 +76,12 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
 
             String fortuneText = json.get("fortune").getAsString();
 
-            LuckEffect luckEffect = LuckEffect.NEUTRAL;
-            if (json.has("luck_effect")) {
+            Aura aura = Aura.NEUTRAL;
+            if (json.has("aura")) {
                 try {
-                    luckEffect = LuckEffect.valueOf(json.get("luck_effect").getAsString().toUpperCase());
+                    aura = Aura.valueOf(json.get("aura").getAsString().toUpperCase());
                 } catch (IllegalArgumentException e) {
-                    LOGGER.warn("Invalid luck_effect in {}, defaulting to NEUTRAL", resourceId);
+                    LOGGER.warn("Invalid aura in {}, defaulting to NEUTRAL", resourceId);
                 }
             }
 
@@ -104,7 +105,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
                 }
             }
 
-            return new Fortune(fortuneText, luckEffect, effects, weight);
+            return new Fortune(fortuneText, aura, effects, weight);
 
         } catch (Exception e) {
             LOGGER.error("Error parsing fortune from {}: {}", resourceId, e.getMessage());

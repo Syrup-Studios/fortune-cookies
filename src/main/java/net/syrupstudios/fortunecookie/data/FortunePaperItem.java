@@ -12,6 +12,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.syrupstudios.fortunecookie.*;
+import net.syrupstudios.fortunecookie.constants.Aura;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class FortunePaperItem extends Item {
 
                 // Give fortune paper to player
                 ItemStack fortunePaper = new ItemStack(FortuneCookieMod.FORTUNE_PAPER);
-                FortunePaperItem.setFortune(fortunePaper, fortune.getFortuneValue(), fortune.getLuckEffect());
+                FortunePaperItem.setFortune(fortunePaper, fortune.getFortuneValue(), fortune.getAura());
 
                 if (!player.getInventory().insertStack(fortunePaper)) {
                     player.dropItem(fortunePaper, false);
@@ -77,9 +78,9 @@ public class FortunePaperItem extends Item {
         FortunePacketHandler.sendFortuneToClient(player, fortune);
     }
 
-    public static void setFortune(ItemStack stack, String fortune, LuckEffect luckEffect) {
+    public static void setFortune(ItemStack stack, String fortune, Aura aura) {
         NbtCompound nbt = stack.getOrCreateNbt();
-        nbt.putString("luck_effect", luckEffect.toString());
+        nbt.putString("aura", aura.toString());
         nbt.putString("fortune", fortune);
     }
 
@@ -90,13 +91,13 @@ public class FortunePaperItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if(stack.getNbt()!= null) {
-            String luckString = stack.getNbt().getString("luck_effect");
-            switch(LuckEffect.valueOf(luckString)) {
-                case GOOD:
+            String aura = stack.getNbt().getString("aura");
+            switch(Aura.valueOf(aura)) {
+                case POSITIVE:
                     tooltip.add(Text.literal("Positive Aura").styled(style -> style.withBold(true).withColor(0x66FFFF)));
                     tooltip.add(Text.literal("\"" +stack.getNbt().getString("fortune")+ "\"").styled(style -> style.withItalic(true).withColor(0xCCFFFF)));
                     break;
-                case BAD:
+                case NEGATIVE:
                     tooltip.add(Text.literal("Negative Aura").styled(style -> style.withBold(true).withColor(0xCC0000)));
                     tooltip.add(Text.literal("\"" +stack.getNbt().getString("fortune")+ "\"").styled(style -> style.withItalic(true).withColor(0xFF5555)));
                     break;

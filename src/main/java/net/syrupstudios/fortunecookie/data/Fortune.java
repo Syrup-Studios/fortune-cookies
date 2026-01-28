@@ -3,25 +3,26 @@ package net.syrupstudios.fortunecookie.data;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.syrupstudios.fortunecookie.constants.Aura;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Fortune {
     private final String fortune;
-    private final LuckEffect luckEffect;
+    private final Aura aura;
     private final List<FortuneEffect> effects;
     private final int weight;
 
-    public Fortune(String fortuneValue, LuckEffect luckEffect, List<FortuneEffect> effects, int weight) {
+    public Fortune(String fortuneValue, Aura aura, List<FortuneEffect> effects, int weight) {
         this.fortune = fortuneValue;
-        this.luckEffect = luckEffect;
+        this.aura = aura;
         this.effects = effects != null ? effects : new ArrayList<>();
         this.weight = weight;
     }
 
-    public LuckEffect getLuckEffect() {
-        return luckEffect;
+    public Aura getAura() {
+        return aura;
     }
 
     public String getFortuneValue() {
