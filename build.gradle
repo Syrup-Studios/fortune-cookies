@@ -17,14 +17,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven {
-		url = "https://maven.midnightdust.eu/releases"
-	}
-	maven {
 		url = "https://api.modrinth.com/maven"
-	}
-	maven {
-		name = "terraformersMC"
-		url = "https://maven.terraformersmc.com"
 	}
 }
 
@@ -36,8 +29,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation include ("com.terraformersmc:modmenu:${project.modmenu_version}")
-	modImplementation include ("eu.midnightdust:midnightlib:${project.midnightlib_version}")
 	
 }
 
