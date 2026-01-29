@@ -4,6 +4,7 @@ import com.google.gson.*;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
@@ -23,7 +24,10 @@ import java.util.List;
 public class FortuneDataLoader implements SimpleSynchronousResourceReloadListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(FortuneDataLoader.class);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final String FORTUNE_DIRECTORY = "fortunes";
+    private static final String POSITIVE_FORTUNES_DIRECTORY = "fortunes/positive";
+    private static final String NEGATIVE_FORTUNES_DIRECTORY = "fortunes/negative";
+    private static final String NEUTRAL_FORTUNES_DIRECTORY = "fortunes/neutral";
+    private static final String DEFAULT_FORTUNES_DIRECTORY = "fortunes/default";
 
     private static FortuneDataLoader INSTANCE;
 
@@ -46,26 +50,35 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         List<Fortune> loadedFortunes = new ArrayList<>();
 
         // Find all fortune JSON files across all namespaces (this tripped me up a bunch when testing)
-        manager.findResources(FORTUNE_DIRECTORY, path -> path.getPath().endsWith(".json"))
-                .forEach((identifier, resource) -> {
-                    try (InputStream stream = resource.getInputStream();
-                         InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-
-                        JsonObject json = GSON.fromJson(reader, JsonObject.class);
-                        Fortune fortune = parseFortuneJson(json, identifier);
-
-                        if (fortune != null) {
-                            loadedFortunes.add(fortune);
-                            LOGGER.info("Loaded fortune from: {}", identifier);
-                        }
-                    } catch (Exception e) {
-                        LOGGER.error("Error loading fortune from {}: {}", identifier, e.getMessage());
-                    }
-                });
+        manager.findResources(POSITIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
+        manager.findResources(NEUTRAL_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
+        manager.findResources(NEGATIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
 
         LOGGER.info("Loaded {} fortunes from datapacks", loadedFortunes.size());
 
         FortuneManager.setFortunes(loadedFortunes);
+    }
+
+    private void loadResources(Identifier identifier, Resource resource, List<Fortune> loadedFortunes) {
+        try (InputStream stream = resource.getInputStream();
+             InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+
+            JsonObject json = GSON.fromJson(reader, JsonObject.class);
+            Fortune fortune = parseFortuneJson(json, identifier);
+
+            if (fortune != null) {
+                loadedFortunes.add(fortune);
+                LOGGER.info("Loaded fortune from: {}", identifier);
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error loading fortune from {}: {}", identifier, e.getMessage());
+        }
     }
 
     private Fortune parseFortuneJson(JsonObject json, Identifier resourceId) {
