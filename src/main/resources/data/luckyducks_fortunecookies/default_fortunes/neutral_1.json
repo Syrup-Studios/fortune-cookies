@@ -1,0 +1,10 @@
+{
+  "fortune": "A partner can help you achieve success.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

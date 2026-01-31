@@ -1,0 +1,14 @@
+{
+  "fortune": "Life always gets harder near the summit.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:slowness",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:unluck",
+      "duration": 30
+    }
+  ]
+}

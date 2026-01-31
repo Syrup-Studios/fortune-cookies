@@ -1,0 +1,14 @@
+{
+  "fortune": "Friends will guide you to your next opportunity.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:dolphins_grace",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:conduit_power",
+      "duration": 60
+    }
+  ]
+}

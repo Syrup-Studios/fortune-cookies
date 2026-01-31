@@ -1,0 +1,10 @@
+{
+  "fortune": "When you do make a mistake, do not treat yourself as if though you were the mistake.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

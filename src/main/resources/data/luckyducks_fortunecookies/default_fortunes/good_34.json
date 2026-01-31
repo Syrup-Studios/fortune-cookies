@@ -1,0 +1,18 @@
+{
+  "fortune": "Play the lottery today. Lady luck is upon you.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:glowing",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:haste",
+      "duration": 60
+    }
+  ]
+}

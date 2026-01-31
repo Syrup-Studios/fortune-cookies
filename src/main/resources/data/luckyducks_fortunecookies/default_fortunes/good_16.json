@@ -1,0 +1,14 @@
+{
+  "fortune": "You will make a new friend who will become a lifelong companion.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:resistance",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:fire_resistance",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fortune": "Pursue your wishes aggressively.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:strength",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:speed",
+      "duration": 60
+    }
+  ]
+}

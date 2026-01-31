@@ -1,0 +1,14 @@
+{
+  "fortune": "A big fortune will descend upon you soon..",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:haste",
+      "duration": 30
+    }
+  ]
+}

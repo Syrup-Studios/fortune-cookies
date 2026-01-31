@@ -1,0 +1,10 @@
+{
+  "fortune": "The strength in your character will come in handy soon.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:weakness",
+      "duration": 30
+    }
+  ]
+}

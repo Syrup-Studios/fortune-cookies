@@ -1,0 +1,10 @@
+{
+  "fortune": "Establish harmony and balance in your life.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

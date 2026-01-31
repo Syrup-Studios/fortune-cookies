@@ -1,0 +1,10 @@
+{
+  "fortune": "Seek advice from those you trust to make important decisions.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

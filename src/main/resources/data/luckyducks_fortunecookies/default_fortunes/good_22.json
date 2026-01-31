@@ -1,0 +1,10 @@
+{
+  "fortune": "Happiness will bring you good luck.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 60
+    }
+  ]
+}

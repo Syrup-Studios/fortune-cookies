@@ -1,0 +1,10 @@
+{
+  "fortune": "Example Positive Default Fortune",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:speed",
+      "duration": 30
+    }
+  ]
+}

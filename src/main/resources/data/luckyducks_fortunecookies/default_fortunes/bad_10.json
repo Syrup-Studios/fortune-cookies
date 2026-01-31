@@ -1,0 +1,18 @@
+{
+  "fortune": "He that can't endure the bad will not live to see the good.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:nausea",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:slowness",
+      "duration": 60
+    }
+  ]
+}

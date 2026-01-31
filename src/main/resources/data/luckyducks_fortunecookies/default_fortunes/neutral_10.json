@@ -1,0 +1,10 @@
+{
+  "fortune": "He climbs highest who helps another up.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

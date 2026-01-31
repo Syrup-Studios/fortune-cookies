@@ -1,0 +1,14 @@
+{
+  "fortune": "A long lost relative will soon come along to your benefit.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:resistance",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:health_boost",
+      "duration": 30
+    }
+  ]
+}

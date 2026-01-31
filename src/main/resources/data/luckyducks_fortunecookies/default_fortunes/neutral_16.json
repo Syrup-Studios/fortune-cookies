@@ -1,0 +1,10 @@
+{
+  "fortune": "Kindness is the art of making someone else's day better.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "fortune": "The land of sunshine and relaxation awaits you.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:night_vision",
+      "duration": 60
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "fortune": "Be yourself, don't give into peer pressure.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

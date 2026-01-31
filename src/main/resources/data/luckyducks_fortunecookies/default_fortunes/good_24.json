@@ -1,0 +1,14 @@
+{
+  "fortune": "You are on the verge of something big.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:strength",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:jump_boost",
+      "duration": 60
+    }
+  ]
+}

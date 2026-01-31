@@ -1,8 +1,8 @@
 package net.syrupstudios.fortunecookie;
 
+import net.syrupstudios.fortunecookie.constants.Aura;
 import net.syrupstudios.fortunecookie.data.Fortune;
 import net.syrupstudios.fortunecookie.data.FortuneDataLoader;
-import net.syrupstudios.fortunecookie.data.LuckEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class FortuneManager {
 
     public static Fortune getRandomFortune() {
         if (FORTUNES.isEmpty()) {
-            return new Fortune("No fortunes loaded! Please add a fortune datapack.", LuckEffect.NEUTRAL, new ArrayList<>(), 10);
+            return new Fortune("No fortunes loaded! Please add a fortune datapack.", Aura.NEUTRAL, new ArrayList<>(), 10);
         }
 
         int totalWeight = FORTUNES.stream()
@@ -46,10 +46,5 @@ public class FortuneManager {
         }
 
         return FORTUNES.get(FORTUNES.size() - 1);
-    }
-
-
-    public static List<Fortune> getAllFortunes() {
-        return new ArrayList<>(FORTUNES);
     }
 }

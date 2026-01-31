@@ -1,0 +1,10 @@
+{
+  "fortune": "You are the life of the party.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 60
+    }
+  ]
+}

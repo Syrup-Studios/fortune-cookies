@@ -1,0 +1,10 @@
+{
+  "fortune": "You'll get more secure and confident in your relationships with your co-workers.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:strength",
+      "duration": 60
+    }
+  ]
+}

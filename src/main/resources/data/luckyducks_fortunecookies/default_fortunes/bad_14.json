@@ -1,0 +1,10 @@
+{
+  "fortune": "In human endeavor, chance favors the prepared mind.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:unluck",
+      "duration": 60
+    }
+  ]
+}

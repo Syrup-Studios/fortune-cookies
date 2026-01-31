@@ -1,0 +1,10 @@
+{
+  "fortune": "You will always be successful in your professional career.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 60
+    }
+  ]
+}

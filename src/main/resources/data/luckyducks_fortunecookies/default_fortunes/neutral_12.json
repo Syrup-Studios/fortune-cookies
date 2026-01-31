@@ -1,0 +1,10 @@
+{
+  "fortune": "There is no substitute for hard work.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

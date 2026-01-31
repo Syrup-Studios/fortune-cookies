@@ -1,0 +1,10 @@
+{
+  "fortune": "Establish harmony and balance in your life.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:dolphins_grace",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "fortune": "The deepest waters make the least noise.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

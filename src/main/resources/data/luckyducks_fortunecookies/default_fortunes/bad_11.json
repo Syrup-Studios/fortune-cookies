@@ -1,0 +1,18 @@
+{
+  "fortune": "Strengthen the bonds with your loved ones; they're invaluable.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:hunger",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:mining_fatigue",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:weakness",
+      "duration": 60
+    }
+  ]
+}

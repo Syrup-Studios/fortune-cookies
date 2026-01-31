@@ -1,0 +1,10 @@
+{
+  "fortune": "Better ask twice than lose yourself once.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

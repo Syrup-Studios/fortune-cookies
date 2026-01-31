@@ -1,0 +1,10 @@
+{
+  "fortune": "Let reality be reality.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

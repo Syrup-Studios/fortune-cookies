@@ -4,11 +4,15 @@ import com.google.gson.*;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 import net.syrupstudios.fortunecookie.FortuneManager;
+import net.syrupstudios.fortunecookie.config.FortuneConfig;
+import net.syrupstudios.fortunecookie.constants.Aura;
+import net.syrupstudios.fortunecookie.constants.Effect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +25,10 @@ import java.util.List;
 public class FortuneDataLoader implements SimpleSynchronousResourceReloadListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(FortuneDataLoader.class);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final String FORTUNE_DIRECTORY = "fortunes";
+    private static final String POSITIVE_FORTUNES_DIRECTORY = "fortunes/positive";
+    private static final String NEGATIVE_FORTUNES_DIRECTORY = "fortunes/negative";
+    private static final String NEUTRAL_FORTUNES_DIRECTORY = "fortunes/neutral";
+    private static final String DEFAULT_FORTUNES_DIRECTORY = "default_fortunes";
 
     private static FortuneDataLoader INSTANCE;
 
@@ -44,26 +51,41 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         List<Fortune> loadedFortunes = new ArrayList<>();
 
         // Find all fortune JSON files across all namespaces (this tripped me up a bunch when testing)
-        manager.findResources(FORTUNE_DIRECTORY, path -> path.getPath().endsWith(".json"))
-                .forEach((identifier, resource) -> {
-                    try (InputStream stream = resource.getInputStream();
-                         InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+        manager.findResources(POSITIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
+        manager.findResources(NEUTRAL_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
+        manager.findResources(NEGATIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                .forEach((identifier, resource) ->
+                        loadResources(identifier, resource, loadedFortunes));
 
-                        JsonObject json = GSON.fromJson(reader, JsonObject.class);
-                        Fortune fortune = parseFortuneJson(json, identifier);
-
-                        if (fortune != null) {
-                            loadedFortunes.add(fortune);
-                            LOGGER.info("Loaded fortune from: {}", identifier);
-                        }
-                    } catch (Exception e) {
-                        LOGGER.error("Error loading fortune from {}: {}", identifier, e.getMessage());
-                    }
-                });
+        if(FortuneConfig.USE_DEFAULTS){
+            manager.findResources(DEFAULT_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                    .forEach((identifier, resource) ->
+                            loadResources(identifier, resource, loadedFortunes));
+        }
 
         LOGGER.info("Loaded {} fortunes from datapacks", loadedFortunes.size());
 
         FortuneManager.setFortunes(loadedFortunes);
+    }
+
+    private void loadResources(Identifier identifier, Resource resource, List<Fortune> loadedFortunes) {
+        try (InputStream stream = resource.getInputStream();
+             InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+
+            JsonObject json = GSON.fromJson(reader, JsonObject.class);
+            Fortune fortune = parseFortuneJson(json, identifier);
+
+            if (fortune != null) {
+                loadedFortunes.add(fortune);
+                LOGGER.info("Loaded fortune from: {}", identifier);
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error loading fortune from {}: {}", identifier, e.getMessage());
+        }
     }
 
     private Fortune parseFortuneJson(JsonObject json, Identifier resourceId) {
@@ -75,12 +97,12 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
 
             String fortuneText = json.get("fortune").getAsString();
 
-            LuckEffect luckEffect = LuckEffect.NEUTRAL;
-            if (json.has("luck_effect")) {
+            Aura aura = Aura.NEUTRAL;
+            if (json.has("aura")) {
                 try {
-                    luckEffect = LuckEffect.valueOf(json.get("luck_effect").getAsString().toUpperCase());
+                    aura = Aura.valueOf(json.get("aura").getAsString().toUpperCase());
                 } catch (IllegalArgumentException e) {
-                    LOGGER.warn("Invalid luck_effect in {}, defaulting to NEUTRAL", resourceId);
+                    LOGGER.warn("Invalid aura in {}, defaulting to NEUTRAL", resourceId);
                 }
             }
 
@@ -89,22 +111,13 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
                 weight = json.get("weight").getAsInt();
             }
 
-            List<Fortune.FortuneEffect> effects = new ArrayList<>();
+            List<Effect> effects = new ArrayList<>();
             if (json.has("effects") && json.get("effects").isJsonArray()) {
                 JsonArray effectsArray = json.getAsJsonArray("effects");
-
-                for (JsonElement element : effectsArray) {
-                    if (element.isJsonObject()) {
-                        JsonObject effectObj = element.getAsJsonObject();
-                        Fortune.FortuneEffect effect = parseEffect(effectObj, resourceId);
-                        if (effect != null) {
-                            effects.add(effect);
-                        }
-                    }
-                }
+                effectsArray.forEach(element -> attemptEffectParsing(resourceId, element, effects));
             }
 
-            return new Fortune(fortuneText, luckEffect, effects, weight);
+            return new Fortune(fortuneText, aura, effects, weight);
 
         } catch (Exception e) {
             LOGGER.error("Error parsing fortune from {}: {}", resourceId, e.getMessage());
@@ -112,7 +125,16 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         }
     }
 
-    private Fortune.FortuneEffect parseEffect(JsonObject effectJson, Identifier resourceId) {
+    private void attemptEffectParsing(Identifier resourceId, JsonElement element, List<Effect> effects) {
+        if (element.isJsonObject()) {
+            Effect effect = parseEffect(element.getAsJsonObject(), resourceId);
+            if (effect != null) {
+                effects.add(effect);
+            }
+        }
+    }
+
+    private Effect parseEffect(JsonObject effectJson, Identifier resourceId) {
         try {
             if (!effectJson.has("effect")) {
                 LOGGER.warn("Effect in {} missing 'effect' field", resourceId);
@@ -120,17 +142,17 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
             }
 
             String effectId = effectJson.get("effect").getAsString();
-            StatusEffect effect = Fortune.FortuneEffect.parseEffect(effectId);
+            StatusEffect effect = Effect.parseEffect(effectId);
 
             if (effect == null) {
                 LOGGER.warn("Unknown effect '{}' in {}", effectId, resourceId);
                 return null;
             }
 
-            // 600 ticks = 30 seconds
+            // 600 ticks = 30 seconds, multiply json duration by 20 to compute seconds -> ticks
             int duration = 600;
             if (effectJson.has("duration")) {
-                duration = effectJson.get("duration").getAsInt();
+                duration = effectJson.get("duration").getAsInt()*20;
             }
 
             // default to 0 = level 1
@@ -139,7 +161,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
                 amplifier = effectJson.get("amplifier").getAsInt();
             }
 
-            return new Fortune.FortuneEffect(effect, duration, amplifier);
+            return new Effect(effect, duration, amplifier);
 
         } catch (Exception e) {
             LOGGER.error("Error parsing effect in {}: {}", resourceId, e.getMessage());

@@ -1,0 +1,10 @@
+{
+  "fortune": "You will do well to expand your business.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:hero_of_the_village",
+      "duration": 60
+    }
+  ]
+}

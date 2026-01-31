@@ -1,0 +1,10 @@
+{
+  "fortune": "Strike iron while it is hot.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:fire_resistance",
+      "duration": 60
+    }
+  ]
+}

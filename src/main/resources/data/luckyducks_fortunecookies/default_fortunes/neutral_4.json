@@ -1,0 +1,10 @@
+{
+  "fortune": "Confucius says your eyes have magnetized a secret admirer.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fortune": "Soon you will be sitting on top of the world.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:jump_boost",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:slow_falling",
+      "duration": 30
+    }
+  ]
+}

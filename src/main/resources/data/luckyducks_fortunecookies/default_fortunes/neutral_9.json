@@ -1,0 +1,10 @@
+{
+  "fortune": "Think for yourself or think for no one.",
+  "aura": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

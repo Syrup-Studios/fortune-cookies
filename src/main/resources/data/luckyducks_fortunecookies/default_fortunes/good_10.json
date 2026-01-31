@@ -1,0 +1,14 @@
+{
+  "fortune": "A deeper appreciation of life's beauty is coming close.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:saturation",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:health_boost",
+      "duration": 30
+    }
+  ]
+}

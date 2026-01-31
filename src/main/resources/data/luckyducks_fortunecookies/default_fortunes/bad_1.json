@@ -1,0 +1,14 @@
+{
+  "fortune": "You don't become a failure until you are satisfied with being one.",
+  "aura": "NEGATIVE",
+  "effects": [
+    {
+      "effect": "minecraft:weakness",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:darkness",
+      "duration": 30
+    }
+  ]
+}

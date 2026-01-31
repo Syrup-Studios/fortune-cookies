@@ -1,0 +1,10 @@
+{
+  "fortune": "You will be fortunate in everything you do.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 60
+    }
+  ]
+}
