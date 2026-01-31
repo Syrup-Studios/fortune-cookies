@@ -1,6 +1,6 @@
 {
   "fortune": "Confucius says your eyes have magnetized a secret admirer.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

@@ -136,16 +136,16 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
 
     private Effect parseEffect(JsonObject effectJson, Identifier resourceId) {
         try {
-            if (!effectJson.has("statusEffect")) {
-                LOGGER.warn("Effect in {} missing 'statusEffect' field", resourceId);
+            if (!effectJson.has("effect")) {
+                LOGGER.warn("Effect in {} missing 'effect' field", resourceId);
                 return null;
             }
 
-            String effectId = effectJson.get("statusEffect").getAsString();
+            String effectId = effectJson.get("effect").getAsString();
             StatusEffect effect = Effect.parseEffect(effectId);
 
             if (effect == null) {
-                LOGGER.warn("Unknown statusEffect '{}' in {}", effectId, resourceId);
+                LOGGER.warn("Unknown effect '{}' in {}", effectId, resourceId);
                 return null;
             }
 
@@ -164,7 +164,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
             return new Effect(effect, duration, amplifier);
 
         } catch (Exception e) {
-            LOGGER.error("Error parsing statusEffect in {}: {}", resourceId, e.getMessage());
+            LOGGER.error("Error parsing effect in {}: {}", resourceId, e.getMessage());
             return null;
         }
     }

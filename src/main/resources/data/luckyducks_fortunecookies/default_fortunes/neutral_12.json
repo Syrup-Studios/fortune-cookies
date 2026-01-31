@@ -1,6 +1,6 @@
 {
   "fortune": "There is no substitute for hard work.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

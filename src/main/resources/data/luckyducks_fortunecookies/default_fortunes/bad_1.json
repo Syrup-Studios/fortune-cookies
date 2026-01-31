@@ -1,6 +1,6 @@
 {
   "fortune": "You don't become a failure until you are satisfied with being one.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:weakness",

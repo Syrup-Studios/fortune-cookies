@@ -1,6 +1,6 @@
 {
   "fortune": "Let reality be reality.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

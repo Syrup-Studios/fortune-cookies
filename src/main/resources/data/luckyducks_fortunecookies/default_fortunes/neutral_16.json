@@ -1,6 +1,6 @@
 {
   "fortune": "Kindness is the art of making someone else's day better.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

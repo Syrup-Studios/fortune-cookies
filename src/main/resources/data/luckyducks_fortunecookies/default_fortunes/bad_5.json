@@ -1,6 +1,6 @@
 {
   "fortune": "If you don't stand for something, you'll fall for anything.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:levitation",

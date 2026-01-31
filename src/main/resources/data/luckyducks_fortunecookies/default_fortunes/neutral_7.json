@@ -1,6 +1,6 @@
 {
   "fortune": "A modest man never talks to himself.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

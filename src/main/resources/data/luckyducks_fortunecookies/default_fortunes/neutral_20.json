@@ -1,6 +1,6 @@
 {
   "fortune": "Be yourself, don't give into peer pressure.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

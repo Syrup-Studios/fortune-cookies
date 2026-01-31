@@ -1,6 +1,6 @@
 {
   "fortune": "The strength in your character will come in handy soon.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:weakness",

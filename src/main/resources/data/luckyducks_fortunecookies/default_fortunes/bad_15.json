@@ -1,6 +1,6 @@
 {
   "fortune": "A calm sea does not make a skilled sailor.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:darkness",

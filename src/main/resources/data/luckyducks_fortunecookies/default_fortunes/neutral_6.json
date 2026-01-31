@@ -1,6 +1,6 @@
 {
   "fortune": "Seek advice from those you trust to make important decisions.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

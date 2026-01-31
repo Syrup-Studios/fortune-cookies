@@ -1,13 +1,13 @@
 {
   "fortune": "In life, it's good to not get too comfortable.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
-      "effect": "minecraft:mining_fatique",
+      "effect": "minecraft:mining_fatigue",
       "duration": 30
     },
     {
-      "effect": "minecraft:INSTANT_DAMAGE",
+      "effect": "minecraft:instant_damage",
       "duration": 1,
       "amplifier": 2
     }

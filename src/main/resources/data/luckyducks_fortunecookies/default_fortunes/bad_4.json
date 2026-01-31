@@ -1,6 +1,6 @@
 {
   "fortune": "The difficulties of life are intended to make us better, not bitter.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:weakness",

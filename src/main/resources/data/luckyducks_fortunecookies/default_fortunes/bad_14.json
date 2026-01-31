@@ -1,6 +1,6 @@
 {
   "fortune": "In human endeavor, chance favors the prepared mind.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:unluck",

@@ -1,6 +1,6 @@
 {
   "fortune": "Time is the wisest counselor.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

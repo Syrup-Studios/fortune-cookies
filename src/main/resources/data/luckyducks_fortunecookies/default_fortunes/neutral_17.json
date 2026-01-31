@@ -1,6 +1,6 @@
 {
   "fortune": "Better ask twice than lose yourself once.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

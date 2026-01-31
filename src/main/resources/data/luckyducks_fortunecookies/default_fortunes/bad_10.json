@@ -1,6 +1,6 @@
 {
   "fortune": "He that can't endure the bad will not live to see the good.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:blindness",

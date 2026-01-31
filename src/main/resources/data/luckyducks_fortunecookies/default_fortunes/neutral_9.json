@@ -1,6 +1,6 @@
 {
   "fortune": "Think for yourself or think for no one.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

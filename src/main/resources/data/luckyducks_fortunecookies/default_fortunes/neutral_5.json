@@ -1,6 +1,6 @@
 {
   "fortune": "You are never bitter, deceptive, or petty.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

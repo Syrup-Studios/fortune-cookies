@@ -1,6 +1,6 @@
 {
   "fortune": "He climbs highest who helps another up.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

@@ -1,13 +1,13 @@
 {
   "fortune": "There's more to life than just money, there's Bitcoin.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:hunger",
       "duration": 60
     },
     {
-      "effect": "minecraft:mining_fatique",
+      "effect": "minecraft:mining_fatigue",
       "duration": 60
     },
     {

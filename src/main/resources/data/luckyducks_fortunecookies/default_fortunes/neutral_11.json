@@ -1,6 +1,6 @@
 {
   "fortune": "The deepest waters make the least noise.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

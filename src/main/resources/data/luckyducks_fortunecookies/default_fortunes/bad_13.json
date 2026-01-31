@@ -1,6 +1,6 @@
 {
   "fortune": "Make serious decisions in the last few days of the month.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:nausea",

@@ -1,6 +1,6 @@
 {
   "fortune": "Follow the advice of a trusted friend this week.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

@@ -1,6 +1,6 @@
 {
   "fortune": "Come back later... I am sleeping. (Yes, cookies need their sleep, too.)",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

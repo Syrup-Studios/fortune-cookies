@@ -1,6 +1,6 @@
 {
   "fortune": "Your perseverance will come in handy soon.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:blindness",

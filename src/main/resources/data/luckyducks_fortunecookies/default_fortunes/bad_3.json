@@ -1,6 +1,6 @@
 {
   "fortune": "If I bring forth what is inside me, what I bring forth will save me.",
-  "luck_effect": "BAD",
+  "aura": "NEGATIVE",
   "effects": [
     {
       "effect": "minecraft:levitation",

@@ -1,6 +1,6 @@
 {
   "fortune": "A partner can help you achieve success.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

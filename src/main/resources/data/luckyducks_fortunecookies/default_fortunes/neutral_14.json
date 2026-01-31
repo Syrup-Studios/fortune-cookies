@@ -1,6 +1,6 @@
 {
   "fortune": "To let another into your heart, first let yourself in.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

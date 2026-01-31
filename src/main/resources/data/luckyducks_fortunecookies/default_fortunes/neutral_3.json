@@ -1,6 +1,6 @@
 {
   "fortune": "Establish harmony and balance in your life.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",

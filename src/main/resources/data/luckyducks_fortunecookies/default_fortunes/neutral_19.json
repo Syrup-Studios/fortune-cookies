@@ -1,6 +1,6 @@
 {
   "fortune": "Achieving peace of mind is a worthwhile goal.",
-  "luck_effect": "NEUTRAL",
+  "aura": "NEUTRAL",
   "effects": [
     {
       "effect": "minecraft:glowing",
