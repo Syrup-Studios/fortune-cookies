@@ -1,0 +1,10 @@
+{
+  "fortune": "Come back later... I am sleeping. (Yes, cookies need their sleep, too.)",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "fortune": "The difficulties of life are intended to make us better, not bitter.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:weakness",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:hunger",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:slowness",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:nausea",
+      "duration": 30
+    }
+  ]
+}

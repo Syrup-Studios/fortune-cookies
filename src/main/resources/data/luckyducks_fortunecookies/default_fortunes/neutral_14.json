@@ -1,0 +1,10 @@
+{
+  "fortune": "To let another into your heart, first let yourself in.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

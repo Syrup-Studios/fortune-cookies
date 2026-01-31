@@ -1,0 +1,10 @@
+{
+  "fortune": "You are never bitter, deceptive, or petty.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

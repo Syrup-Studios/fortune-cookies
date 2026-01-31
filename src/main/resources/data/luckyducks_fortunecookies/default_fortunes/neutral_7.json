@@ -1,0 +1,10 @@
+{
+  "fortune": "A modest man never talks to himself.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

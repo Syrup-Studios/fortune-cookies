@@ -1,0 +1,18 @@
+{
+  "fortune": "If you don't stand for something, you'll fall for anything.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:levitation",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:slow_falling",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:instant_damage",
+      "duration": 1
+    }
+  ]
+}

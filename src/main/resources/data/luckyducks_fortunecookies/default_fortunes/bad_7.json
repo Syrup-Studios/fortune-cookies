@@ -1,0 +1,14 @@
+{
+  "fortune": "Your perseverance will come in handy soon.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:nausea",
+      "duration": 30
+    }
+  ]
+}

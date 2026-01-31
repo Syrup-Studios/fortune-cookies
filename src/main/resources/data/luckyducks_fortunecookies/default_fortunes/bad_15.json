@@ -1,0 +1,14 @@
+{
+  "fortune": "A calm sea does not make a skilled sailor.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:darkness",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:levitation",
+      "duration": 20
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fortune": "Make serious decisions in the last few days of the month.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:nausea",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:wither",
+      "duration": 60
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "fortune": "Achieving peace of mind is a worthwhile goal.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

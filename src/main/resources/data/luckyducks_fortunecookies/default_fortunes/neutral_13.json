@@ -1,0 +1,10 @@
+{
+  "fortune": "Time is the wisest counselor.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

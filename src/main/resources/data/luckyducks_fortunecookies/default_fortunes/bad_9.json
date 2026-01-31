@@ -1,0 +1,15 @@
+{
+  "fortune": "There is no mistake so great as that of being always right.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:unluck",
+      "duration": 120
+    },
+    {
+      "effect": "minecraft:INSTANT_DAMAGE",
+      "duration": 1,
+      "amplifier": 2
+    }
+  ]
+}

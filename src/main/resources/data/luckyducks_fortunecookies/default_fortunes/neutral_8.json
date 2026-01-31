@@ -1,0 +1,10 @@
+{
+  "fortune": "Follow the advice of a trusted friend this week.",
+  "luck_effect": "NEUTRAL",
+  "effects": [
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

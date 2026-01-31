@@ -1,0 +1,14 @@
+{
+  "fortune": "If I bring forth what is inside me, what I bring forth will save me.",
+  "luck_effect": "BAD",
+  "effects": [
+    {
+      "effect": "minecraft:levitation",
+      "duration": 15
+    },
+    {
+      "effect": "minecraft:blindness",
+      "duration": 30
+    }
+  ]
+}
