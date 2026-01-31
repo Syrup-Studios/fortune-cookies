@@ -10,6 +10,7 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 import net.syrupstudios.fortunecookie.FortuneManager;
+import net.syrupstudios.fortunecookie.config.FortuneConfig;
 import net.syrupstudios.fortunecookie.constants.Aura;
 import net.syrupstudios.fortunecookie.constants.Effect;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
     private static final String POSITIVE_FORTUNES_DIRECTORY = "fortunes/positive";
     private static final String NEGATIVE_FORTUNES_DIRECTORY = "fortunes/negative";
     private static final String NEUTRAL_FORTUNES_DIRECTORY = "fortunes/neutral";
-    private static final String DEFAULT_FORTUNES_DIRECTORY = "fortunes/default";
+    private static final String DEFAULT_FORTUNES_DIRECTORY = "default_fortunes";
 
     private static FortuneDataLoader INSTANCE;
 
@@ -59,6 +60,12 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         manager.findResources(NEGATIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
                 .forEach((identifier, resource) ->
                         loadResources(identifier, resource, loadedFortunes));
+
+        if(FortuneConfig.USE_DEFAULTS){
+            manager.findResources(DEFAULT_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+                    .forEach((identifier, resource) ->
+                            loadResources(identifier, resource, loadedFortunes));
+        }
 
         LOGGER.info("Loaded {} fortunes from datapacks", loadedFortunes.size());
 
