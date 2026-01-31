@@ -1,0 +1,14 @@
+{
+  "fortune": "With brains and beauty, you are the complete package.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:hero_of_the_village",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:strength",
+      "duration": 60
+    }
+  ]
+}

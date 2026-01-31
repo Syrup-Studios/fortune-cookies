@@ -1,0 +1,14 @@
+{
+  "fortune": "The most beautiful adventures are not those we go seek.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:jump_boost",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:speed",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fortune": "Follow your heart and you will find happiness.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:health_boost",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:instant_health",
+      "duration": 60
+    }
+  ]
+}

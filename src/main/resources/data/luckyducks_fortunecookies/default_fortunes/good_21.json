@@ -1,0 +1,14 @@
+{
+  "fortune": "To love and be loved is to feel the sun from both sides.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:dolphins_grace",
+      "duration": 60
+    },
+    {
+      "effect": "minecraft:health_boost",
+      "duration": 60
+    }
+  ]
+}

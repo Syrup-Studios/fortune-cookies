@@ -1,0 +1,14 @@
+{
+  "fortune": "Good health will be yours for a long time.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:regeneration",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:resistance",
+      "duration": 30
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "fortune": "You will find yourself at a happy crossroads.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 60
+    }
+  ]
+}

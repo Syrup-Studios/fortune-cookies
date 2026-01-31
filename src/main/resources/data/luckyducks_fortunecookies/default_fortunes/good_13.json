@@ -1,0 +1,18 @@
+{
+  "fortune": "Little acorns lead to mighty oaks.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:resistance",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:regeneration",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:strength",
+      "duration": 30
+    }
+  ]
+}

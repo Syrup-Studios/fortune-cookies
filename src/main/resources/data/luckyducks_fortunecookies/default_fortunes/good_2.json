@@ -1,0 +1,10 @@
+{
+  "fortune": "Later today, an unexpected adventure awaits.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:luck",
+      "duration": 30
+    }
+  ]
+}

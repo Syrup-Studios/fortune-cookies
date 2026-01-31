@@ -1,0 +1,14 @@
+{
+  "fortune": "You will be awarded some great honor.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:hero_of_the_village",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:glowing",
+      "duration": 30
+    }
+  ]
+}

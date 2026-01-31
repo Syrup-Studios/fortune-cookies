@@ -1,0 +1,14 @@
+{
+  "fortune": "You will reach the highest possible point in your business or profession.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:levitation",
+      "duration": 30
+    },
+    {
+      "effect": "minecraft:slow_falling",
+      "duration": 90
+    }
+  ]
+}

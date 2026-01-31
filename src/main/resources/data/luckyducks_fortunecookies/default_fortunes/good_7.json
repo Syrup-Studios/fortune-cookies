@@ -1,0 +1,10 @@
+{
+  "fortune": "Your optimism will lead you to opportunities hidden in the shadows.",
+  "aura": "POSITIVE",
+  "effects": [
+    {
+      "effect": "minecraft:night_vision",
+      "duration": 30
+    }
+  ]
+}
