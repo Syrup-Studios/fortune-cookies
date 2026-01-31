@@ -3,16 +3,18 @@ Datapack path
 `(Datapackname)/data/(namespace)/fortunes/(fortunename).json`
 
 Example json
+
+Requried fields: fortune, aura, effects
 ```json
 {
   "fortune": "Example Bad Fortune",
   "aura": "NEGATIVE",
-  "weight": 5, // not required, defaulted to 10
+  "weight": 5, 
   "effects": [
     {
       "effect": "minecraft:weakness",
-      "duration": 40, // in seconds, not required, will default to 30
-      "amplifier": 0 // level of effect, not required, level 1 by default
+      "duration": 40, 
+      "amplifier": 0 
     },
     {
       "effect": "minecraft:mining_fatigue",
