@@ -6,11 +6,12 @@
 	"description": "Unlike other fortune cookie mods that totally exist (?), our Lucky Duck's Fortune Cookies™ are authentic and based on real fortunes from fortune cookies because the artist eats too much take-out!",
 	"authors": [
 		"Salad",
-        "GooberExe"
+        "GooberExe",
+		"Uncle Toasty"
 	],
 	"contact": {
 	},
-	"license": "All rights reserved",
+	"license": "RSL-1.0",
 	"icon": "assets/luckyducks_fortunecookies/icon.png",
 	"environment": "*",
 	"entrypoints": {
