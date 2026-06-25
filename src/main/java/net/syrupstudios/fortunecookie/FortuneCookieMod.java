@@ -1,6 +1,5 @@
 package net.syrupstudios.fortunecookie;
 
-import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -34,7 +33,6 @@ public class FortuneCookieMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        MidnightConfig.init(FortuneCookieMod.MOD_ID, FortuneConfig.class);
         FortuneDataLoader.register();
 
         FortuneManager.initialize();
