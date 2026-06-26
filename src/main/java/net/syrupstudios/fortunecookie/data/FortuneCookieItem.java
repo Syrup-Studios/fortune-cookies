@@ -1,26 +1,26 @@
 package net.syrupstudios.fortunecookie.data;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.World;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 
 public class FortuneCookieItem extends Item {
-    public FortuneCookieItem(Settings settings) {
-        super(settings);
+    public FortuneCookieItem(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack result = super.finishUsing(stack, world, user);
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
+        ItemStack result = super.finishUsingItem(stack, level, user);
 
-        if (!world.isClient && user instanceof ServerPlayerEntity player) {
+        if (!level.isClientSide && user instanceof ServerPlayer player) {
             // Give fortune paper to player
             ItemStack fortunePaper = new ItemStack(FortuneCookieMod.FORTUNE_PAPER);
-            if (!player.getInventory().insertStack(fortunePaper)) {
-                player.dropItem(fortunePaper, false);
+            if (!player.getInventory().add(fortunePaper)) {
+                player.drop(fortunePaper, false);
             }
         }
         return result;

@@ -1,5 +1,7 @@
 {
   "item.luckyducks_fortunecookies.fortune_cookie": "Fortune Cookie",
   "item.luckyducks_fortunecookies.fortune_paper": "Fortune Paper",
-  "luckyducks_fortunecookies.midnightconfig.title": "Lucky Duck's Fortune Cookies"
+  "luckyducks_fortunecookies.midnightconfig.title": "Lucky Duck's Fortune Cookies",
+  "luckyducks_fortunecookies.midnightconfig.fortuneMenuHeader": "Select whether or not you would like default fortunes in addition",
+  "luckyducks_fortunecookies.midnightconfig.fortuneMenuHeader2": "to your custom datapack loaded fortunes."
 }

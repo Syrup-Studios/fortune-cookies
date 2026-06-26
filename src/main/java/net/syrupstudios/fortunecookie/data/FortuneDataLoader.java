@@ -3,11 +3,11 @@ package net.syrupstudios.fortunecookie.data;
 import com.google.gson.*;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.resource.Resource;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
-import net.minecraft.util.Identifier;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.syrupstudios.fortunecookie.FortuneCookieMod;
 import net.syrupstudios.fortunecookie.FortuneManager;
 import net.syrupstudios.fortunecookie.config.FortuneConfig;
@@ -34,7 +34,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
 
     public static void register() {
         INSTANCE = new FortuneDataLoader();
-        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(INSTANCE);
+        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(INSTANCE);
     }
 
     public static FortuneDataLoader getInstance() {
@@ -42,27 +42,27 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
     }
 
     @Override
-    public Identifier getFabricId() {
-        return new Identifier(FortuneCookieMod.MOD_ID, "fortune_loader");
+    public ResourceLocation getFabricId() {
+        return new ResourceLocation(FortuneCookieMod.MOD_ID, "fortune_loader");
     }
 
     @Override
-    public void reload(ResourceManager manager) {
+    public void onResourceManagerReload(ResourceManager manager) {
         List<Fortune> loadedFortunes = new ArrayList<>();
 
-        // Find all fortune JSON files across all namespaces (this tripped me up a bunch when testing)
-        manager.findResources(POSITIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+        // listResources replaces findResources in Mojang mappings
+        manager.listResources(POSITIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
                 .forEach((identifier, resource) ->
                         loadResources(identifier, resource, loadedFortunes));
-        manager.findResources(NEUTRAL_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+        manager.listResources(NEUTRAL_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
                 .forEach((identifier, resource) ->
                         loadResources(identifier, resource, loadedFortunes));
-        manager.findResources(NEGATIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+        manager.listResources(NEGATIVE_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
                 .forEach((identifier, resource) ->
                         loadResources(identifier, resource, loadedFortunes));
 
         if(FortuneConfig.USE_DEFAULTS){
-            manager.findResources(DEFAULT_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
+            manager.listResources(DEFAULT_FORTUNES_DIRECTORY, path -> path.getPath().endsWith(".json"))
                     .forEach((identifier, resource) ->
                             loadResources(identifier, resource, loadedFortunes));
         }
@@ -72,8 +72,8 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         FortuneManager.setFortunes(loadedFortunes);
     }
 
-    private void loadResources(Identifier identifier, Resource resource, List<Fortune> loadedFortunes) {
-        try (InputStream stream = resource.getInputStream();
+    private void loadResources(ResourceLocation identifier, Resource resource, List<Fortune> loadedFortunes) {
+        try (InputStream stream = resource.open(); // open() replaces getInputStream()
              InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
 
             JsonObject json = GSON.fromJson(reader, JsonObject.class);
@@ -88,7 +88,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         }
     }
 
-    private Fortune parseFortuneJson(JsonObject json, Identifier resourceId) {
+    private Fortune parseFortuneJson(JsonObject json, ResourceLocation resourceId) {
         try {
             if (!json.has("fortune")) {
                 LOGGER.error("Fortune file {} missing required 'fortune' field", resourceId);
@@ -125,7 +125,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         }
     }
 
-    private void attemptEffectParsing(Identifier resourceId, JsonElement element, List<Effect> effects) {
+    private void attemptEffectParsing(ResourceLocation resourceId, JsonElement element, List<Effect> effects) {
         if (element.isJsonObject()) {
             Effect effect = parseEffect(element.getAsJsonObject(), resourceId);
             if (effect != null) {
@@ -134,7 +134,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
         }
     }
 
-    private Effect parseEffect(JsonObject effectJson, Identifier resourceId) {
+    private Effect parseEffect(JsonObject effectJson, ResourceLocation resourceId) {
         try {
             if (!effectJson.has("effect")) {
                 LOGGER.warn("Effect in {} missing 'effect' field", resourceId);
@@ -142,7 +142,7 @@ public class FortuneDataLoader implements SimpleSynchronousResourceReloadListene
             }
 
             String effectId = effectJson.get("effect").getAsString();
-            StatusEffect effect = Effect.parseEffect(effectId);
+            MobEffect effect = Effect.parseEffect(effectId);
 
             if (effect == null) {
                 LOGGER.warn("Unknown effect '{}' in {}", effectId, resourceId);

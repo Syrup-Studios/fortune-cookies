@@ -2,16 +2,16 @@ package net.syrupstudios.fortunecookie;
 
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.resources.ResourceLocation;
 
 public class FortunePacketHandler {
-    public static final Identifier FORTUNE_PACKET_ID = new Identifier(FortuneCookieMod.MOD_ID, "fortune");
+    public static final ResourceLocation FORTUNE_PACKET_ID = new ResourceLocation(FortuneCookieMod.MOD_ID, "fortune");
 
-    public static void sendFortuneToClient(ServerPlayerEntity player, String fortune) {
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(fortune);
+    public static void sendFortuneToClient(ServerPlayer player, String fortune) {
+        FriendlyByteBuf buf = PacketByteBufs.create();
+        buf.writeUtf(fortune);
         ServerPlayNetworking.send(player, FORTUNE_PACKET_ID, buf);
     }
 }
