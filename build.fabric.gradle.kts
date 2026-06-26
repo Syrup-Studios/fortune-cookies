@@ -25,6 +25,8 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+    
+    modImplementation("maven.modrinth:midnightlib:1.4.1-fabric")
 }
 
 loom {
