@@ -17,7 +17,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-rootProject.name = "plushie_friends"
+rootProject.name = "fortune_cookies"
 
 stonecutter {
     create(rootProject) {
